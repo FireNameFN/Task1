@@ -13,3 +13,5 @@ double triangleArea = triangle.GetArea();
 
 bool isTriangleRight = triangle.IsRight();
 ```
+# SQL Task
+In the `SQL.txt`
