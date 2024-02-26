@@ -1,0 +1,32 @@
+CREATE TABLE products (
+  id INT NOT NULL,
+  name VARCHAR(64) NOT NULL,
+  
+  PRIMARY KEY (id)
+);
+
+CREATE TABLE categories (
+  id INT NOT NULL,
+  name VARCHAR(64) NOT NULL,
+  
+  PRIMARY KEY (id)
+);
+
+CREATE TABLE products_categories (
+  product INT NOT NULL,
+  category INT NOT NULL,
+  
+  PRIMARY KEY (product, category)
+);
+
+INSERT INTO products (id, name) VALUES
+  (1, 'Visual Studio'), (2, 'Rider'), (3, 'AdGuard'), (4, 'Chrome'), (5, 'Firefox'), (6, 'Table'), (7, 'Chair'), (8, 'Closet'), (9, 'Fork'), (10, 'Spoon'), (11, 'Pocket singularity');
+
+INSERT INTO categories (id, name) VALUES (1, 'Program'), (2, 'IDE'), (3, 'Browser'), (4, 'Furniture'), (5, 'For kitchen'), (6, 'Cutlery');
+
+INSERT INTO products_categories (product, category) VALUES
+  (1, 1), (1, 2), (2, 1), (2, 2), (3, 1), (4, 1), (4, 3), (5, 1), (5, 3), (6, 4), (6, 5), (7, 4), (7, 5), (8, 4), (9, 5), (9, 6), (10, 5), (10, 6)
+
+SELECT products.name, categories.name FROM products
+LEFT JOIN products_categories ON products.id = products_categories.product
+LEFT JOIN categories ON categories.id = products_categories.category
